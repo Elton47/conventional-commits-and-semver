@@ -9,7 +9,7 @@
     "test": "ng test",
     "release": "standard-version",
     "release-generate-doc-and-commit": "npm run release && npm run generate-doc-and-commit && echo Released successfully!",
-    "generate-doc-and-commit": "npm run generate-project-doc && (git diff-index --quiet HEAD ./documentation && echo No documentation updates were detected, aborting unnecessary commit about docs generation... || git reset && git add ./documentation && git commit -m \"docs(project-doc): update project documentation\" && echo Documentation updated successfully!)",
+    "generate-doc-and-commit": "npm run generate-project-doc && (git status --untracked-files=all --porcelain ./documentation | grep . && (git reset && git add ./documentation && git commit -m \"docs(project-doc): update project documentation\" && echo Documentation updated successfully! || echo Error generating the documentation) || echo No documentation updates were detected, aborting unnecessary commit about docs generation...)",
     "generate-project-doc": "compodoc -p tsconfig.json --hideGenerator",
     "prepare": "husky install"
   },
