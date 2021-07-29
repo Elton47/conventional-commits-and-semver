@@ -11,6 +11,7 @@
     "release-generate-doc-and-commit": "npm run release && npm run generate-doc-and-commit && echo Released successfully!",
     "generate-doc-and-commit": "npm run generate-project-doc && (git status --untracked-files=all --porcelain ./documentation | grep . && (git reset && git add ./documentation && git commit -m \"docs(project-doc): update project documentation\" && echo Documentation updated successfully! || echo Error generating the documentation) || echo No documentation updates were detected, aborting unnecessary commit about docs generation...)",
     "generate-project-doc": "compodoc -p tsconfig.json --hideGenerator",
+    "view-documentation": "sh -c 'if test -f \"./documentation/index.html\"; then npx --no-install http-server ./documentation -a localhost -p 33449 -P http://localhost:33449? -o http://localhost:33449?; else echo There is no document generated yet, please run the following command: \"npm run generate-project-doc\"; fi;'",
     "prepare": "husky install"
   },
   "private": true,
