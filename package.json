@@ -12,6 +12,7 @@
     "release-generate-doc-and-commit": "npm run release && npm run generate-doc-and-commit && echo Released successfully!",
     "generate-doc-and-commit": "npm run generate-project-doc && (git status --untracked-files=all --porcelain ./documentation | grep . && (git reset && git add ./documentation && git commit -m \"docs(project-doc): update project documentation\" && echo Documentation updated successfully! || echo Error generating the documentation) || echo No documentation updates were detected, aborting unnecessary commit about docs generation...)",
     "generate-project-doc": "compodoc -p tsconfig.json --hideGenerator",
+    "generate-api-client": "./node_modules/.bin/ng-swagger-gen --config ./swagger-gen-config.json",
     "view-documentation": "sh -c 'if test -f \"./documentation/index.html\"; then npx --no-install http-server ./documentation -a localhost -p 33449 -P http://localhost:33449? -o http://localhost:33449?; else echo There is no document generated yet, please run the following command: \"npm run generate-project-doc\"; fi;'",
     "prepare": "husky install"
   },
@@ -47,6 +48,7 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.1",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "ng-swagger-gen": "^2.3.1",
     "standard-version": "^9.3.1",
     "typescript": "~4.3.5"
   },
