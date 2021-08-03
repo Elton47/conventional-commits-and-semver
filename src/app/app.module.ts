@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ApiConfiguration, ApiConfigurationInterface } from 'src/app/core/api/api-configuration';
+import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -15,7 +16,7 @@ import { AppComponent } from './app.component';
   providers: [
     {
       provide: ApiConfiguration,
-      useValue: { rootUrl: 'root_api_url_here' } as ApiConfigurationInterface
+      useValue: { rootUrl: environment.apiUrl } as ApiConfigurationInterface
     }
   ],
   bootstrap: [AppComponent]
